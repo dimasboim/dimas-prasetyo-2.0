@@ -16,9 +16,10 @@ type CarouselProps = {
   slides: Slide[];
   autoPlayMs?: number;
   ariaLabel?: string;
+  imageVariant?: 'cover' | 'logo';
 };
 
-export function Carousel({ slides, autoPlayMs = 5500, ariaLabel = 'carousel' }: CarouselProps) {
+export function Carousel({ slides, autoPlayMs = 5500, ariaLabel = 'carousel', imageVariant = 'cover' }: CarouselProps) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const trackRef = useRef<HTMLDivElement>(null);
@@ -66,7 +67,7 @@ export function Carousel({ slides, autoPlayMs = 5500, ariaLabel = 'carousel' }: 
         >
           {slides.map((s, i) => (
             <div className="carousel-slide" key={s.title + i} role="group" aria-roledescription="slide" aria-label={`${i + 1} of ${count}`}>
-              <div className="project-card">
+              <div className={`project-card${imageVariant === 'logo' ? ' project-card--logo' : ''}`}>
                 <img src={s.image} alt={s.title} loading="lazy" />
                 <div className="project-copy">
                   {s.badge ? <span className="badge">{s.badge}</span> : null}

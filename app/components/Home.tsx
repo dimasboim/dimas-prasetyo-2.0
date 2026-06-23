@@ -308,7 +308,7 @@ export default function Home({ skillGroups, projects, testimonials }: HomeProps)
             <p className="section-label">Testimonials</p>
             <h2>Trusted by founders and operators.</h2>
           </div>
-          <Carousel slides={testimonials} autoPlayMs={6000} ariaLabel="Testimonials" />
+          <Carousel slides={testimonials} autoPlayMs={6000} ariaLabel="Testimonials" imageVariant="logo" />
         </motion.section>
       )}
 

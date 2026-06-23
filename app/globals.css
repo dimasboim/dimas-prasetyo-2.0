@@ -574,6 +574,31 @@ main.site-shell {
   filter: saturate(1.1) contrast(1.05);
 }
 
+/* Compact variant for logos/wordmarks (e.g. testimonials) — the source
+   image isn't a photo, so it shouldn't dominate the card like a hero shot. */
+.project-card--logo img {
+  width: 56px;
+  height: 56px;
+  margin-bottom: 1.25rem;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  background: var(--color-surface-muted);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 8px;
+}
+
+.project-card--logo:hover img {
+  transform: none;
+  filter: none;
+}
+
+/* Extra horizontal padding so quote text clears the prev/next nav
+   buttons, which sit at the carousel's vertical center. */
+.project-card--logo {
+  padding: 1.75rem 3rem;
+}
+
 .project-copy {
   display: grid;
   gap: 0.85rem;
