@@ -1,5 +1,11 @@
 import './globals.css';
 import type { Metadata } from 'next';
+import { Inter, Sora } from 'next/font/google';
+import Header from './components/Header';
+import ViewCounter from './components/ViewCounter';
+
+const inter = Inter({ subsets: ['latin'], variable: '--font-body', display: 'swap' });
+const sora = Sora({ subsets: ['latin'], variable: '--font-heading', display: 'swap' });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.dimas-prasetyo.com'),
@@ -58,8 +64,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${sora.variable}`}>
       <body>
+        <Header />
         {children}
         <footer className="site-footer">
           <div className="footer-inner site-shell">
@@ -68,7 +75,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <span>Senior Technology Leader</span>
             </div>
             <nav className="footer-links">
-              <a href="#skills">Skills</a>
+              <a href="#skills">Executive summary</a>
+              <a href="#capabilities">Capabilities</a>
               <a href="#selected-work">Selected work</a>
               <a href="/cv">CV</a>
               <a href="#contact">Contact</a>
@@ -77,7 +85,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <a href="https://instagram.com/dimasboim" target="_blank" rel="noopener noreferrer">Instagram</a>
               <a href="https://www.linkedin.com/in/dimasprasetyotegar" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             </div>
-            <div className="footer-meta">© {new Date().getFullYear()} Dimas Prasetyo</div>
+            <div className="footer-meta">
+              © {new Date().getFullYear()} Dimas Prasetyo
+              <ViewCounter />
+            </div>
           </div>
         </footer>
       </body>
